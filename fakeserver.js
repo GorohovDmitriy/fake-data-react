@@ -54,9 +54,9 @@ const generateDataUk = (number) => {
 };
 
 fs.writeFileSync(
-	"./db.json",
+	"./public/db.json",
 	JSON.stringify({ en: generateDataEn(1000), ru: generateDataRu(1000), uk: generateDataUk(1000) })
 );
 
 
-console.log(generateDataRu(0));
+console.log(generateDataRu(10));
