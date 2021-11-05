@@ -51,27 +51,27 @@ const Contents = ({dataBase, value}) => {
 						{dataBase.slice(0, currentPage).map((row) => (
 							<TableRow key={row.name} sx={{'&:last-child td, &:last-child th': {border: 0}}}>
 								<TableCell component='th' scope='row'>
-									{value >= 0.75 ? row.name.slice(-7).concat('ßå∑´œ´∂åß') : row.name}
+									{value >= 0.5 ? row.name.slice(1, -1) : row.name}
+								</TableCell>
+								<TableCell align='right'>{row.id}</TableCell>
+								<TableCell align='right'>
+									{value >= 2.25 ? row.city.concat('N') : row.city}
 								</TableCell>
 								<TableCell align='right'>
-									{value >= 1.75 ? row.id.toExponential(2) : row.id}
+									{value >= 4.25 ? row.address.slice(1, -1) : row.address}
 								</TableCell>
 								<TableCell align='right'>
-									{value >= 2.25 ? row.city.split('').reverse() : row.city}
-								</TableCell>
-								<TableCell align='right'>
-									{value >= 3.25 ? row.address.split('').reverse() : row.address}
-								</TableCell>
-								<TableCell align='right'>
-									{value >= 8
-										? row.secondary.concat('ßå∑´œ´∂åß').split('').join(',')
+									{value >= 6.25
+										? row.secondary.concat(Math.random().toString(36).substr(2, 2))
 										: row.secondary}
 								</TableCell>
 								<TableCell align='right'>
-									{value >= 4.75 ? row.street.split('').join('-') : row.street}
+									{value >= 8.75
+										? row.street.concat(Math.random().toString(36).substr(2, 2))
+										: row.street}
 								</TableCell>
 								<TableCell align='right'>
-									+{value >= 5.75 ? row.phone.slice(1, 3) : row.phone}
+									+{value >= 9.5 ? row.phone.slice(0, -1) : row.phone}
 								</TableCell>
 							</TableRow>
 						))}
