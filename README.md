@@ -9,3 +9,4 @@
 - `material-ui`
 - `faker.js`
 - `react-csv`
+- `json-server`
