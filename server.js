@@ -1,16 +1,17 @@
-const jsonServer = require('json-server')
-const server = jsonServer.create()
-const router = jsonServer.router('./public/db.json')
-const middlewares = jsonServer.defaults({
-	static: './build'
-})
+const express = require('express')
+const app = express()
 
-const PORT = process.env.PORT || 3001
+const path = require('path')
+const port = process.env.PORT || 3001
 
-server.use(middlewares)
-server.use(router)
+if (process.env.NODE_ENV === 'production') {
+	app.use(express.static('build'))
+	app.get('*', (req, res) => {
+		req.sendFile(path.resolve(__dirname, 'build', 'index.html'))
+	})
+}
 
-server.listen(PORT, () => {
-	console.log('Server is runing');
-
+app.listen(port, (err) => {
+	if (err) return console.log(err);
+	console.log('Server run', port);
 })
