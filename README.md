@@ -2,7 +2,7 @@
 
 ### Libraries used
 
-- [Ссылка на проект](https://task-fake-data.web.app/)
+- [Ссылка на проект](https://generate-data-fake.herokuapp.com/)
 
 > Get started `npm run json-server, npm run start`
 
