@@ -4,7 +4,7 @@ const router = _router('./db.json');
 const middlewares = defaults({
 	static: './build'
 });
-const PORT = process.env.PORT || 3001;
+const PORT = process.env.PORT || 8000;
 server.use(middlewares);
 server.use(rewriter({
 	'/api/*': '/$1',
