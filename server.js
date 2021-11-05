@@ -1,62 +1,16 @@
-const faker = require('faker')
-const fs = require("fs");
+const jsonServer = require('json-server')
+const server = jsonServer.create()
+const router = jsonServer.router('./public/db.json')
+const middlewares = jsonServer.defaults({
+	static: './build'
+})
 
-const generateDataEn = (number) => {
-	faker.locale = 'en_US'
-	const persons = [];
-	while (number >= 0) {
-		persons.push({
-			id: number,
-			name: faker.name.findName(),
-			city: faker.address.cityName(),
-			street: faker.address.streetName(),
-			secondary: faker.address.secondaryAddress(),
-			address: faker.address.streetAddress(),
-			phone: faker.phone.phoneNumberFormat(),
-		});
-		number--;
-	}
-	return persons;
-};
-const generateDataRu = (number) => {
-	faker.locale = 'ru'
-	const persons = [];
-	while (number >= 0) {
-		persons.push({
-			id: number,
-			name: faker.name.findName(),
-			city: faker.address.cityName(),
-			street: faker.address.streetName(),
-			secondary: faker.address.secondaryAddress(),
-			address: faker.address.streetAddress(),
-			phone: faker.phone.phoneNumberFormat(),
-		});
-		number--;
-	}
-	return persons;
-};
-const generateDataUk = (number) => {
-	faker.locale = 'uk'
-	const persons = [];
-	while (number >= 0) {
-		persons.push({
-			id: number,
-			name: faker.name.findName(),
-			city: faker.address.cityName(),
-			street: faker.address.streetName(),
-			secondary: faker.address.secondaryAddress(),
-			address: faker.address.streetAddress(),
-			phone: faker.phone.phoneNumberFormat(),
-		});
-		number--;
-	}
-	return persons;
-};
+const PORT = process.env.PORT || 3001
 
-fs.writeFileSync(
-	"./db.json",
-	JSON.stringify({ en: generateDataEn(1000), ru: generateDataRu(1000), uk: generateDataUk(1000) })
-);
+server.use(middlewares)
+server.use(router)
 
+server.listen(PORT, () => {
+	console.log('Server is runing');
 
-console.log(generateDataRu(0));
+})
