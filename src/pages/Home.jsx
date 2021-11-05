@@ -52,7 +52,7 @@ const Home = () => {
 
 	const toggleLanguages = async (string) => {
 		try {
-			const response = await axios.get(`https://generate-data-fake.herokuapp.com/api/${string}`)
+			const response = await axios.get(`http://localhost:8000/${string}`)
 			setDataBase(response.data)
 		} catch (error) {
 			alert('The data did not come from the server (')
